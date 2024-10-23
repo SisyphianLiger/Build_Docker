@@ -1,8 +1,10 @@
 # Build_Docker
 Learning the in's and outs of Docker by making it!
 
+# Linux System
+OS: VM Arch Linux
 
-# All Technical Writing can be found in the Journal and will mark the push message as such
+# Where to Read my Notes 
 If you would like to see my progress check the Journal directory. There I have seperated two sections.
 
 1. Theory --> This is any file you will see in the Jounral Folder

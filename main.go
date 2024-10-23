@@ -4,17 +4,17 @@ import (
 	"fmt"
 	"os"
 	"os/exec"
+	"syscall"
 )
-
 
 func main() {
 	switch os.Args[1] {
-		case "run":
-			parent()
-		case "child":
-			child()
-		default:
-			panic("Ohhhhh noooooo!")
+	case "run":
+		parent()
+	case "child":
+		child()
+	default:
+		panic("Ohhhhh noooooo!")
 	}
 }
 
@@ -30,9 +30,10 @@ func parent() {
 	os.Exit(1)
 }
 
-
 func child() {
 	cmd := exec.Command(os.Args[2], os.Args[3:]...)
+	cmd.SysProcAttr = &syscall.SysProcAttr{
+		Cloneflags: syscall.CLONE_NEWUTS | syscall.CLONE_NEWPID | syscall.CLONE_NEWNS}
 	cmd.Stdin = os.Stdin
 	cmd.Stdout = os.Stdout
 	cmd.Stderr = os.Stderr
